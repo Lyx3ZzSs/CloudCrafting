@@ -10,21 +10,23 @@
     <packaging>pom</packaging>
     <modules>
         <module>mybatis_generator2024</module>
+        <module>cloud-provider-payment8001</module>
     </modules>
 
     <properties>
+        <!--编译配置-->
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!--版本管理-->
         <hutool.version>5.8.22</hutool.version>
         <lombok.version>1.18.26</lombok.version>
         <druid.version>1.1.20</druid.version>
-        <mybatis.springboot.version>3.0.2</mybatis.springboot.version>
         <mybatis-plus.springboot.version>3.5.9</mybatis-plus.springboot.version>
         <mysql.version>8.0.11</mysql.version>
         <swagger3.version>2.2.0</swagger3.version>
         <fastjson2.version>2.0.40</fastjson2.version>
-        <velocity.version>2.3</velocity.version>
         <freemarker.version>2.3.31</freemarker.version>
         <spring.boot.test.version>3.1.5</spring.boot.test.version>
         <spring.boot.version>3.2.0</spring.boot.version>
@@ -34,7 +36,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <!--springboot 3.2.0-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -88,13 +89,6 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
                 <version>${mybatis-plus.springboot.version}</version>
-            </dependency>
-
-            <!--velocity-->
-            <dependency>
-                <groupId>org.apache.velocity</groupId>
-                <artifactId>velocity-engine-core</artifactId>
-                <version>${velocity.version}</version>
             </dependency>
 
             <!--freemarker引擎模板-->
