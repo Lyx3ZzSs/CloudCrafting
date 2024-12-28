@@ -26,7 +26,6 @@
         <mybatis-plus.springboot.version>3.5.9</mybatis-plus.springboot.version>
         <mysql.version>8.0.11</mysql.version>
         <swagger3.version>2.2.0</swagger3.version>
-        <fastjson2.version>2.0.40</fastjson2.version>
         <freemarker.version>2.3.31</freemarker.version>
         <spring.boot.test.version>3.1.5</spring.boot.test.version>
         <spring.boot.version>3.2.0</spring.boot.version>
@@ -98,12 +97,6 @@
                 <version>${freemarker.version}</version>
             </dependency>
 
-            <!-- fastjson2 -->
-            <dependency>
-                <groupId>com.alibaba.fastjson2</groupId>
-                <artifactId>fastjson2</artifactId>
-                <version>${fastjson2.version}</version>
-            </dependency>
 
             <!-- swagger3 调用方式 http://你的主机IP地址:5555/swagger-ui/index.html -->
             <dependency>

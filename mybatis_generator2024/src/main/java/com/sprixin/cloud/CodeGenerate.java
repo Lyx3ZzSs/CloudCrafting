@@ -84,7 +84,7 @@ public class CodeGenerate {
 
                             //4.1 实体类策略配置
                             .entityBuilder()
-                            .enableFileOverride()
+                            //.enableFileOverride() 文件覆盖
                             .disableSerialVersionUID()  //默认是开启实体类序列化，可以手动disable使它不序列化。
                             .enableTableFieldAnnotation() //开启生成实体类时生成字段注解
                             .enableLombok() //开启Lombok
@@ -103,20 +103,20 @@ public class CodeGenerate {
 
                             //4.2 Controller 策略配置
                             .controllerBuilder()
-                            .enableFileOverride()
+                            //.enableFileOverride() 文件覆盖
                             .enableHyphenStyle() //开启驼峰连转字符
                             .formatFileName("%sController") //格式化 Controller类文件名称，%s进行匹配表名，如UserController
                             .enableRestStyle() //开启生成 @RestController 控制器
 
                             //4.3 service 策略配置
                             .serviceBuilder()
-                            .enableFileOverride()
+                            //.enableFileOverride() 文件覆盖
                             .formatServiceFileName("%sService") //格式化 service 接口文件名称，%s进行匹配表名，如 UserService
                             .formatServiceImplFileName("%sServiceImpl") //格式化 service 实现类文件名称，%s进行匹配表名，如 UserServiceImpl
 
                             //4.4、Mapper策略配置
                             .mapperBuilder()
-                            .enableFileOverride()
+                            //.enableFileOverride() 文件覆盖
                             .superClass(BaseMapper.class)   //设置父类
                             .enableBaseResultMap()  //启用 BaseResultMap 生成
                             .enableBaseColumnList() //启用 BaseColumnList

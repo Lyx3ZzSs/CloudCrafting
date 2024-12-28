@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 * </p>
 *
 * @author yuanxin.li
-* @since 2024-12-27 07:42:19
+* @since 2024-12-28 03:53:44
 */
 @Data
 @AllArgsConstructor
@@ -48,8 +48,8 @@ public class Pay {
     private BigDecimal amount;
 
     @TableField("deleted")
-    @TableLogic
-    private Boolean deleted;
+    @TableLogic(value = "0",delval = "1")
+    private Byte deleted;
 
     @TableField("create_time")
     private Date createTime;
