@@ -2,6 +2,7 @@ package com.sprixin.cloud.controller;
 
 import com.sprixin.cloud.dto.PayDTO;
 import com.sprixin.cloud.entity.Pay;
+import com.sprixin.cloud.resp.ResultData;
 import com.sprixin.cloud.service.PayService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -31,33 +32,33 @@ public class PayController {
 
     @PostMapping("/add")
     @Operation(summary = "新增",description = "新增支付流水方法，JSON串做参数")
-    public Boolean addPay(@RequestBody Pay pay) {
-        return payService.save(pay);
+    public ResultData<Boolean> addPay(@RequestBody Pay pay) {
+        return ResultData.success(payService.save(pay));
     }
 
     @DeleteMapping("/del/{id}")
     @Operation(summary = "删除",description = "删除支付流水方法")
-    public Boolean deletePay(@PathVariable("id") Integer id) {
-        return payService.removeById(id);
+    public ResultData<Boolean> deletePay(@PathVariable("id") Integer id) {
+        return ResultData.success(payService.removeById(id));
     }
 
     @PutMapping("/update")
     @Operation(summary = "修改",description = "修改支付流水方法")
-    public Boolean updatePay(@RequestBody PayDTO payDTO) {
+    public ResultData<Boolean> updatePay(@RequestBody PayDTO payDTO) {
         Pay pay = new Pay();
         BeanUtils.copyProperties(payDTO,pay);
-        return payService.updateById(pay);
+        return ResultData.success(payService.updateById(pay));
     }
 
     @GetMapping("/get/{id}")
     @Operation(summary = "按照ID查流水",description = "查询支付流水方法")
-    public Pay getById(@PathVariable("id") Integer id) {
-        return payService.getById(id);
+    public ResultData<Pay> getById(@PathVariable("id") Integer id) {
+        return ResultData.success(payService.getById(id));
     }
 
     @GetMapping("/get/all")
     @Operation(summary = "查询所有流水",description = "查询所有支付流水方法")
-    public List<Pay> getAll() {
-        return payService.list();
+    public ResultData<List<Pay>> getAll() {
+        return ResultData.success(payService.list());
     }
 }

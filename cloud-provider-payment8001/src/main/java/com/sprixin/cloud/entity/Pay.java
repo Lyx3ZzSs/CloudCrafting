@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.AllArgsConstructor;
@@ -52,9 +53,11 @@ public class Pay {
     private Byte deleted;
 
     @TableField("create_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;
 
     @TableField("update_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateTime;
 
 }
