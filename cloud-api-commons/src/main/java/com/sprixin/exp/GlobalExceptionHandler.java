@@ -1,7 +1,7 @@
-package com.sprixin.cloud.exp;
+package com.sprixin.exp;
 
-import com.sprixin.cloud.resp.ResultData;
-import com.sprixin.cloud.resp.ReturnCodeEnum;
+import com.sprixin.resp.ResultData;
+import com.sprixin.resp.ReturnCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

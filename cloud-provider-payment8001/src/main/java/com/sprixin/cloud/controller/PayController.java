@@ -1,9 +1,9 @@
 package com.sprixin.cloud.controller;
 
-import com.sprixin.cloud.dto.PayDTO;
 import com.sprixin.cloud.entity.Pay;
 import com.sprixin.cloud.resp.ResultData;
 import com.sprixin.cloud.service.PayService;
+import com.sprixin.dto.PayDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;

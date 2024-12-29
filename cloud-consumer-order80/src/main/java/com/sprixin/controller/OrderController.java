@@ -1,6 +1,6 @@
 package com.sprixin.controller;
 
-import com.sprixin.entities.PayDTO;
+import com.sprixin.dto.PayDTO;
 import com.sprixin.resp.ResultData;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;

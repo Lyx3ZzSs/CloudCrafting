@@ -1,4 +1,4 @@
-package com.sprixin.cloud.dto;
+package com.sprixin.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
