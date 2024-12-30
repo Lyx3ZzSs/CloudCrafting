@@ -3,7 +3,7 @@
 <mapper namespace="com.sprixin.cloud.mapper.PayMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.sprixin.cloud.entity.Pay">
+    <resultMap id="BaseResultMap" type="com.sprixin.cloud.entities.Pay">
         <id column="id" property="id" />
         <result column="pay_no" property="payNo" />
         <result column="order_no" property="orderNo" />

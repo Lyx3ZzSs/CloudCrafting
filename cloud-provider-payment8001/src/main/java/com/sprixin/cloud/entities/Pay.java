@@ -1,4 +1,4 @@
-package com.sprixin.cloud.entity;
+package com.sprixin.cloud.entities;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

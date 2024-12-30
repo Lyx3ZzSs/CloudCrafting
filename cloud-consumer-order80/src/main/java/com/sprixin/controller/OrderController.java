@@ -1,6 +1,6 @@
 package com.sprixin.controller;
 
-import com.sprixin.dto.PayDTO;
+import com.sprixin.entities.PayDTO;
 import com.sprixin.resp.ResultData;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,9 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping
 public class OrderController {
 
-    private final String PaymentSrv_URL = "http://localhost:8001";//先写死，硬编码
+//    private final String PaymentSrv_URL = "http://localhost:8001";//先写死，硬编码
+
+    private final String PaymentSrv_URL = "http://cloud-payment-service";//服务注册中心上的微服务名称
 
     @Resource
     private RestTemplate restTemplate;

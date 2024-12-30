@@ -1,14 +1,15 @@
 package com.sprixin.cloud.controller;
 
-import com.sprixin.cloud.entity.Pay;
+import com.sprixin.cloud.entities.Pay;
 import com.sprixin.cloud.resp.ResultData;
 import com.sprixin.cloud.service.PayService;
-import com.sprixin.dto.PayDTO;
+import com.sprixin.entities.PayDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +30,9 @@ public class PayController {
 
     @Resource
     private PayService payService;
+
+    @Value("${server.port}")
+    private String port;
 
     @PostMapping("/add")
     @Operation(summary = "新增",description = "新增支付流水方法，JSON串做参数")
@@ -60,5 +64,10 @@ public class PayController {
     @Operation(summary = "查询所有流水",description = "查询所有支付流水方法")
     public ResultData<List<Pay>> getAll() {
         return ResultData.success(payService.list());
+    }
+
+    @GetMapping("/get/info")
+    private String getInfoByConsul(@Value("${sprixin.info}") String sprixinInfo ) {
+        return "sprixinInfo:" + sprixinInfo + "\t" + "port:" + port;
     }
 }

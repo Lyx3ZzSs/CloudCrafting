@@ -19,6 +19,13 @@
 
 
     <dependencies>
+
+        <!--SpringCloud consul discovery -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        </dependency>
+
         <!--web + actuator-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

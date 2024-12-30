@@ -1,6 +1,6 @@
 package com.sprixin.cloud.service.impl;
 
-import com.sprixin.cloud.entity.Pay;
+import com.sprixin.cloud.entities.Pay;
 import com.sprixin.cloud.mapper.PayMapper;
 import com.sprixin.cloud.service.PayService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -1,4 +1,4 @@
-package com.sprixin.dto;
+package com.sprixin.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
