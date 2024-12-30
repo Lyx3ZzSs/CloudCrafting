@@ -68,6 +68,6 @@ public class PayController {
 
     @GetMapping("/get/info")
     private String getInfoByConsul(@Value("${sprixin.info}") String sprixinInfo ) {
-        return "sprixinInfo:" + sprixinInfo + "\t" + "port:" + port;
+         return "sprixinInfo:" + sprixinInfo + "\t" + "port:" + port;
     }
 }
