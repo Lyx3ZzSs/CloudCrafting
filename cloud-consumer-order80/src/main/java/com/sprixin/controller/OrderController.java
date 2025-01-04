@@ -3,8 +3,12 @@ package com.sprixin.controller;
 import com.sprixin.entities.PayDTO;
 import com.sprixin.resp.ResultData;
 import jakarta.annotation.Resource;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @RestController
 @RequestMapping
@@ -17,26 +21,52 @@ public class OrderController {
     @Resource
     private RestTemplate restTemplate;
 
+    @Resource
+    private DiscoveryClient discoveryClient;
+
     @GetMapping("/consumer/pay/add")
     public ResultData add(PayDTO payDTO) {
-        return restTemplate.postForObject(PaymentSrv_URL+"/pay/add",payDTO, ResultData.class);
+        return restTemplate.postForObject(PaymentSrv_URL + "/pay/add", payDTO, ResultData.class);
     }
 
     @GetMapping("/consumer/pay/get/{id}")
     public ResultData get(@PathVariable("id") Integer id) {
-        return restTemplate.getForObject(PaymentSrv_URL+ "/pay/get/" + id, ResultData.class);
+        return restTemplate.getForObject(PaymentSrv_URL + "/pay/get/" + id, ResultData.class);
     }
 
 
     @GetMapping("/consumer/pay/del/{id}")
     public ResultData del(@PathVariable("id") Integer id) {
-        restTemplate.delete(PaymentSrv_URL+"/pay/del/" + id);
+        restTemplate.delete(PaymentSrv_URL + "/pay/del/" + id);
         return ResultData.success(null);
     }
 
     @GetMapping("/consumer/pay/update")
     public ResultData update(PayDTO payDTO) {
-        restTemplate.put(PaymentSrv_URL+"/pay/update",payDTO);
+        restTemplate.put(PaymentSrv_URL + "/pay/update", payDTO);
         return ResultData.success(null);
+    }
+
+    @GetMapping(value = "/consumer/pay/get/info")
+    public String getInfoByConsul() {
+        return restTemplate.getForObject(PaymentSrv_URL + "/pay/get/info", String.class);
+    }
+
+    @GetMapping("/consumer/discovery")
+    public String discovery() {
+        List<String> services = discoveryClient.getServices();
+
+        for (String service : services) {
+            System.out.println(service);
+        }
+
+        System.out.println("==========================================");
+
+        List<ServiceInstance> instances = discoveryClient.getInstances("cloud-payment-service");
+        for (ServiceInstance element : instances) {
+            System.out.println(element.getServiceId() + "\t" + element.getHost() + "\t" + element.getPort() + "\t" + element.getUri());
+        }
+
+        return instances.get(0).getServiceId() + ":" + instances.get(0).getPort();
     }
 }

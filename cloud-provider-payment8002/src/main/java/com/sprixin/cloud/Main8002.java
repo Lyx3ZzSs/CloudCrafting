@@ -1,6 +1,5 @@
 package com.sprixin.cloud;
 
-import jakarta.annotation.Resource;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,8 +10,8 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 @MapperScan("com.sprixin.*.mapper")
 @EnableDiscoveryClient
 @RefreshScope //动态刷新
-public class Main8001 {
+public class Main8002 {
     public static void main(String[] args) {
-        SpringApplication.run(Main8001.class,args);
+        SpringApplication.run(Main8002.class,args);
     }
 }
