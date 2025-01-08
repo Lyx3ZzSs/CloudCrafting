@@ -1,4 +1,4 @@
-package com.sprixin.config;
+package com.sprixin.cloud.config;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

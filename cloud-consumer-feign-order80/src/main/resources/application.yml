@@ -25,9 +25,9 @@ spring:
 #            readTimeout: 3000
           cloud-payment-service:
             #连接超时时间
-            connectTimeout: 5000
+            connectTimeout: 2000
             #读取超时时间
-            readTimeout: 5000
+            readTimeout: 2000
       compression:
         request:
           enabled: true
@@ -35,3 +35,12 @@ spring:
           mime-types: text/xml,application/xml,application/json #触发压缩数据类型
         response:
           enabled: true
+
+#Feign日志以什么级别监控那个接口
+logging:
+  level:
+    com:
+      sprixin:
+        cloud:
+          apis:
+            PayFeignApi: debug

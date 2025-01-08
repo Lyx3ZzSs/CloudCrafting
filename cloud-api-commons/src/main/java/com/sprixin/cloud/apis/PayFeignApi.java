@@ -1,4 +1,4 @@
-package com.sprixin.apis;
+package com.sprixin.cloud.apis;
 
 import com.sprixin.entities.PayDTO;
 import com.sprixin.resp.ResultData;

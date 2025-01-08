@@ -1,8 +1,10 @@
 package com.sprixin.controller;
 
-import com.sprixin.apis.PayFeignApi;
+import cn.hutool.core.date.DateUtil;
+import com.sprixin.cloud.apis.PayFeignApi;
 import com.sprixin.entities.PayDTO;
 import com.sprixin.resp.ResultData;
+import com.sprixin.resp.ReturnCodeEnum;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +26,17 @@ public class OrderController {
 
     @GetMapping("/feign/pay/get/{id}")
     public ResultData get(@PathVariable("id") Integer id) {
-        return payFeignApi.getPayInfo(id);
+        System.out.println("========支付微服务远程调用，按照id查询订单支付流水信息");
+        ResultData resultData = null;
+        try {
+            System.out.println("========调用开始:" + DateUtil.now());
+            resultData = payFeignApi.getPayInfo(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("========调用结束:" + DateUtil.now());
+            return ResultData.fail(ReturnCodeEnum.RC500.getCode(),e.getMessage());
+        }
+        return resultData;
     }
 
     @GetMapping("/feign/pay/mylb")
