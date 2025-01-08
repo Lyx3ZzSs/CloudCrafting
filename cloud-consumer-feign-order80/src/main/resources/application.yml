@@ -28,3 +28,10 @@ spring:
             connectTimeout: 5000
             #读取超时时间
             readTimeout: 5000
+      compression:
+        request:
+          enabled: true
+          min-request-size: 2048 #最小触发压缩的大小
+          mime-types: text/xml,application/xml,application/json #触发压缩数据类型
+        response:
+          enabled: true
