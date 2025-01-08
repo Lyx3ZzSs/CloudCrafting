@@ -13,6 +13,9 @@ spring:
         prefer-ip-address: true #优先使用服务ip进行注册
         service-name: ${spring.application.name}
     openfeign:
+      httpclient:
+        hc5:
+          enabled: true
       client:
         config:
 #          default:
