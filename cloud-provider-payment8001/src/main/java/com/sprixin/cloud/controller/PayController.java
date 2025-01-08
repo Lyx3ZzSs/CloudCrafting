@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -57,7 +58,14 @@ public class PayController {
     @GetMapping("/get/{id}")
     @Operation(summary = "按照ID查流水",description = "查询支付流水方法")
     public ResultData<Pay> getById(@PathVariable("id") Integer id) {
-        return ResultData.success(payService.getById(id));
+        //服务提供方业务处理，为了测试feign的超时时间控制
+        try {
+            TimeUnit.SECONDS.sleep(62);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Pay pay = payService.getById(id);
+        return ResultData.success(pay);
     }
 
     @GetMapping("/get/all")
