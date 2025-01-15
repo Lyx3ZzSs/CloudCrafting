@@ -81,8 +81,16 @@ resilience4j:
     instances:
       cloud-payment-service:
         baseConfig: default
-
-
+####resilience4j ratelimiter 限流的例子
+  ratelimiter:
+    configs:
+      default:
+        limitForPeriod: 2 #在一次刷新周期内，允许执行的最大请求数
+        limitRefreshPeriod: 1s # 限流器每隔limitRefreshPeriod刷新一次，将允许处理的最大请求数量重置为limitForPeriod
+        timeout-duration: 1 # 线程等待权限的默认等待时间
+    instances:
+      cloud-payment-service:
+        baseConfig: default
 #Resilience4j CircuitBreaker 按照次数：COUNT_BASED的例子
 # 6次访问中当执行方法的失败率达到50%时CircuitBreaker将进入开启OPEN状态（保险丝跳闸断电）拒绝所有请求。
 # 等待5秒钟后，CircuitBreaker将自动从开启OPEN状态过渡到半开状态HALF_OPEN状态，允许一些请求通过测试服务是否恢复正常

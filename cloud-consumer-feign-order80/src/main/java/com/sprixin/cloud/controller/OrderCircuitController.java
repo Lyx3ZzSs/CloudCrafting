@@ -3,6 +3,7 @@ package com.sprixin.cloud.controller;
 import com.sprixin.cloud.apis.PayFeignApi;
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,5 +42,15 @@ public class OrderCircuitController {
     public CompletableFuture<String> myBulkheadPoolFallback(Integer id, Throwable t)
     {
         return CompletableFuture.supplyAsync(() -> "Bulkhead.Type.THREADPOOL，系统繁忙，请稍后再试-----/(ㄒoㄒ)/~~");
+    }
+
+    @GetMapping("/feign/pay/rateLimit/{id}")
+    @RateLimiter(name = "cloud-payment-service",fallbackMethod = "myRateLimitFallback")
+    public String myRateLimit(@PathVariable("id") Integer id) {
+        return payFeignApi.myRateLimit(id);
+    }
+
+    public String myRateLimitFallback(Integer id,Throwable throwable) {
+        return "你被限流了，禁止访问/(ㄒoㄒ)/~~";
     }
 }
