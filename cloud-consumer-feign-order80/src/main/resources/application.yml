@@ -39,8 +39,8 @@ spring:
       circuitbreaker:
         enabled: true
         #没开分组永远不用分组的配置，精确优先、分组次之（开了分组）、默认最后
-        group:
-          enabled: true
+#        group:
+#          enabled: true
 
 #Feign日志以什么级别监控那个接口
 logging:
@@ -76,8 +76,8 @@ resilience4j:
     configs:
       default:
         core-thread-pool-size: 1
-        max-thread-pool-size: 1
-        queue-capacity: 1
+        max-thread-pool-size: 1  #max-thread-pool-size 1 + queue-capacity 1 = 2
+        queue-capacity: 1 #1个max + 1个在队列，第三个来报错
     instances:
       cloud-payment-service:
         baseConfig: default
